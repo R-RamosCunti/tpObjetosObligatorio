@@ -1,4 +1,4 @@
-import entradas.*
+//import productora.productora  no va aca
 class Banda {
     const property nombreBanda
     method canon() = 1000000
@@ -8,9 +8,10 @@ class Banda {
     method popularidad() 
     /* Metodos abstractos:para obligar a las subclases a implementarlos */
     
-    method contratarUnaBanda (banda) {
-        bandasAsistentes.agregarBanda(banda)
-    }
+    /* no va aca (era anidar) 
+    method contratarUnaBanda (banda) { 
+        productora.agregarBanda(banda)
+    }*/
 
 }
 
@@ -56,14 +57,15 @@ class BandaDeIndie inherits Banda {
         return 500 * self.cantidadDeInstrumentos()
     }
 }
-object bandasAsistentes  {
+
+/*object bandasAsistentes  { // se va por sobredelegacion
     const bandasContratadas=[]
     method agregarBanda(banda)=bandasContratadas.add(banda)
     method presupuestoBandaTotal() = bandasContratadas.sum({banda => banda.presupuesto()})
-    method bandaQueMasVendio() = bandasContratadas.max({banda => informacionHistoricaEntradas.cantidadEntradasDe(banda)})
+    method bandaQueMasVendio() = bandasContratadas.max({banda => productora.cantidadEntradasDe(banda)})
     
 
-}
+}*/
 
 /*
 (version corta de lo utilizado)

@@ -14,6 +14,7 @@ class Entrada {
 
 }
 
+/* Se va este objeto por sobredelgacion, se devuelve la responsabilidad a la productora
 object informacionHistoricaEntradas { //informacion historica de las entradas
     var property entradasVendidasHistoricamente = [] 
     method agregarEntrada(entrada) = entradasVendidasHistoricamente.add(entrada)
@@ -22,4 +23,4 @@ object informacionHistoricaEntradas { //informacion historica de las entradas
     method cantidadEntradasDe (banda){
         entradasVendidasHistoricamente.count({entrada => entrada.banda() == banda})
     }
-}
+}*/

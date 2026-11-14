@@ -1,4 +1,5 @@
-import entradas.*
+import productora.productora
+import error.DineroInvalidoException
 
 class Asistente {
     var property tipoDeAbono //Vip o fan
@@ -8,17 +9,17 @@ class Asistente {
         self.validarDinero() 
         self.restarMonto(tipoDeAbono.montoEntrada(entrada)) // aca difieren en base al tipoDeAbono
         self.agregarEntradaAlHistorial(entrada)
-        informacionHistoricaEntradas.agregarEntrada(entrada)
+        productora.agregarEntrada(entrada)
 
     }
     method aumentarDescVip(cantidad) {
         tipoDeAbono.aumentarDescuento(cantidad)
     }
 
-    method validarDinero(){
+    method validarDinero(){ // se modifica por crear una excepcion para manejar el error especifico
         if (dineroDisponible<=0) {
-            self.error("Error: Saldo negativo,no se puede comprar la entrada") //si el saldo es negativo entonces no deja comprar la entrada 
-        }
+            throw new DineroInvalidoException() //si el saldo es negativo entonces no deja comprar la entrada 
+        } //no se maneja que pasa si sale menos que el dinero disponible por que no se aclara que hacer en ese caso
     }
 
     method restarMonto(cantidad) {
@@ -37,17 +38,19 @@ class Asistente {
 
 object fan { //es objeto porque nunca va a cambiar el comportamiento del tipo de abono fan
     method montoEntrada(entrada) = entrada.precioEntrada()
+    method aumentarDescuento(cantidad) {}
 
 }
 
 class AbonoVip { //es una "clase" de tipo de abonno y es clase porque  
     var property descuento //el descuento puede cambiar segun el asistente 
     method montoEntrada(entrada) = entrada.precioEntrada()*(1- descuento/100)
-    method aumentarDescuento(cantidad) {
-        descuento+=cantidad
-    }
+    method aumentarDescuento(cantidad) {} /* queda vacio porque no es un metodo de retorno 
+    y no realiza ningun efecto en este caso. */
     
 }
+
+
 
 /*
 (version corta de lo utilizado)
