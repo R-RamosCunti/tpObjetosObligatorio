@@ -45,7 +45,7 @@ object fan { //es objeto porque nunca va a cambiar el comportamiento del tipo de
 class AbonoVip { //es una "clase" de tipo de abonno y es clase porque  
     var property descuento //el descuento puede cambiar segun el asistente 
     method montoEntrada(entrada) = entrada.precioEntrada()*(1- descuento/100)
-    method aumentarDescuento(cantidad) {} /* queda vacio porque no es un metodo de retorno 
+    method aumentarDescuento(cantidad) {descuento += cantidad} /* queda vacio porque no es un metodo de retorno 
     y no realiza ningun efecto en este caso. */
     
 }
